@@ -1,0 +1,15 @@
+.invalid {
+    color: #a94442;
+    margin-left: 15px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.row-flex {
+    display: flex;
+    justify-content: space-between 5px;
+}
+
+.field {
+    height: 10%;
+}

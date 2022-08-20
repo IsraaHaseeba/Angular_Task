@@ -1,0 +1,65 @@
+<form #form="ngForm" name="myForm">
+
+    <label for="name">Name</label>
+    <div class="row-flex">
+        <input class="field" type="text"
+            [ngStyle]="{'border-left':(user.name == '' && nameControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.name" minlength="4" required name="name" id="name" #nameControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['name']?.touched && form.form.controls['name']?.invalid" title="Invalid"
+            class="invalid"> !
+        </div>
+    </div>
+
+
+    <label for="username">Username</label>
+    <div class="row-flex">
+        <input class="field" type="text"
+            [ngStyle]="{'border-left':(user.username == '' && usernameControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.username" required name="username" id="username" #usernameControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['username']?.touched && form.form.controls['username']?.invalid" title="Invalid"
+            class="invalid"> !
+        </div>
+    </div>
+
+
+    <label for="age">Age</label>
+    <div class="row-flex">
+        <input class="field" type="number"
+            [ngStyle]="{'border-left':(user.age == 0 && ageControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.age" name="age" required id="age" #ageControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['age']?.touched  && form.form.controls['age']?.invalid" title="Invalid"
+            class="invalid"> !
+        </div>
+    </div>
+
+
+    <label for="email">Email</label>
+    <div class="row-flex">
+        <input class="field" type="email"
+            [ngStyle]="{'border-left':(user.email == '' && emailControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.email" name="email" email required id="email" #emailControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['email']?.touched && form.form.controls['email']?.invalid" title="Invalid"
+            class="invalid">
+            !
+        </div>
+    </div>
+
+    <label for="password">Password</label>
+
+    <div class="row-flex">
+        <input class="field" type="password "
+            [ngStyle]="{'border-left':(user.password == '' && passwordControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.password" minlength="4" required required name="password" id="password"
+            #passwordControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['password']?.touched  && form.form.controls['password']?.invalid "
+            title="Invalid" class="invalid"> !
+        </div>
+    </div>
+
+
+
+
+</form>
+
+<button type="submit" (click)="addUser(form)" routerLink="/table" routerLinkActive="active">Add User</button>
+<br>
