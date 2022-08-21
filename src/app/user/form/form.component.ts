@@ -35,13 +35,17 @@ export class FormComponent implements OnInit {
     if (!form.form.valid) {
       form.form.markAllAsTouched();
     }
-    if (this.user) {
-      this.nextId = this.userService.userList.length;
-
-      this.user.id = this.nextId;
-      this.userService.userList.push({ ...this.user });
+    else if (this.user) {
+      if (this.id > -1) {
+        this.userService.userList[this.user.id] = this.user;
+      } else {
+        this.nextId = this.userService.userList.length;
+        this.user.id = this.nextId + 1;
+        this.userService.userList.push({ ...this.user });
+      }
 
       this.router.navigate(['/user/table']);
+
     }
 
 

@@ -6,17 +6,18 @@ import { UserService } from '../Services/user.service';
 import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 import { FormsModule } from '@angular/forms';
+import { AgePipePipe } from './age-pipe.pipe';
 
 
 @NgModule({
   declarations:
     [FormComponent,
-      TableComponent],
+      TableComponent, AgePipePipe],
   imports: [
     CommonModule,
     UserRoutingModule, FormsModule
 
   ],
-  providers: [UserService]
+  providers: [UserService, AgePipePipe]
 })
 export class UserModule { }

@@ -22,16 +22,17 @@
         </div>
     </div>
 
-
-    <label for="age">Age</label>
+    <label for="dob">Date Of Birth</label>
     <div class="row-flex">
-        <input class="field" type="number"
-            [ngStyle]="{'border-left':(user.age == 0 && ageControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.age" name="age" required id="age" #ageControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['age']?.touched  && form.form.controls['age']?.invalid" title="Invalid"
+        <input class="field" type="date" [ngStyle]="{'border-left':( dobControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.dob" name="dob" required id="dob" #dobControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['dob']?.touched  && form.form.controls['dob']?.invalid" title="Invalid"
             class="invalid"> !
         </div>
     </div>
+
+
+
 
 
     <label for="email">Email</label>

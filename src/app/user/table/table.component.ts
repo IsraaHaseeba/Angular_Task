@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 import { User } from '../../app.component';
+import { AgePipePipe } from '../age-pipe.pipe';
 
 @Component({
   selector: 'app-table',
@@ -11,7 +12,7 @@ import { User } from '../../app.component';
 })
 export class TableComponent {
 
-  constructor(public userService: UserService, public router: Router) { }
+  constructor(public userService: UserService, public agePipePipe: AgePipePipe, public router: Router) { }
 
   ngOnInit() {
 
