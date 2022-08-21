@@ -8,10 +8,10 @@ export class AgePipePipe implements PipeTransform {
   transform(dob?: Date): number {
 
     if (dob != undefined) {
-      console.log(dob + "jjjjj");
-      var res = new Date(dob).getTime()
-      let timeDiff = Math.abs(Date.now() - res);
-      let age = Math.floor((timeDiff / (1000 * 3600 * 24)) / 365.25);
+
+      var yearOfBirth = new Date(dob).getFullYear();
+      var currentYear = new Date().getFullYear();
+      let age = Math.abs(currentYear - yearOfBirth);
       return age;
     }
     return 0;
