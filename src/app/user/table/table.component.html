@@ -1,6 +1,7 @@
 <table border="1">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Username</th>
             <th>Age</th>
@@ -12,13 +13,15 @@
     </thead>
     <tbody>
 
-        <!-- <tr *ngFor="let _user of userList">
+        <tr *ngFor="let _user of userService.userList">
+            <td>{{_user.id}} </td>
             <td>{{_user.name}} </td>
             <td>{{_user.username}}</td>
             <td>{{_user.age}}</td>
             <td>{{_user.email}}</td>
             <th><button (click)="deleteUser(_user)">x</button></th>
+            <th><button (click)="editUser(_user)">edit</button></th>
 
-        </tr>-->
+        </tr>
     </tbody>
 </table>

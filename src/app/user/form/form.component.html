@@ -1,3 +1,4 @@
+<h1>{{id>-1? "Update user":"Add a new User"}}</h1>
 <form #form="ngForm" name="myForm">
 
     <label for="name">Name</label>
@@ -49,7 +50,7 @@
     <div class="row-flex">
         <input class="field" type="password "
             [ngStyle]="{'border-left':(user.password == '' && passwordControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.password" minlength="4" required required name="password" id="password"
+            [(ngModel)]="user.password" minlength="4" required name="password" id="password"
             #passwordControl="ngModel"><br><br>
         <div *ngIf="form.form.controls['password']?.touched  && form.form.controls['password']?.invalid "
             title="Invalid" class="invalid"> !
@@ -61,5 +62,6 @@
 
 </form>
 
-<button type="submit" (click)="addUser(form)" routerLink="/table" routerLinkActive="active">Add User</button>
+<button type="submit" (click)="addUser(form)">{{id>-1? "Update": "Add"}}
+</button>
 <br>
