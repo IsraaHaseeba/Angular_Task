@@ -14,19 +14,22 @@ import { UserService } from 'src/app/Services/user.service';
 
 export class FormComponent implements OnInit {
 
-  user: User = { id: 0, name: '', username: '', age: 0, email: '', password: '' };
+  user: User = { id: 0, username: '', email: '', password: '' };
   _user?: User;
-  id = 0;
+  id = -1;
 
-  constructor(public userService: UserService, public activatedRoute: ActivatedRoute, public router: Router) { }
+  constructor(public userService: UserService,
+    public activatedRoute: ActivatedRoute, public router: Router) { }
   nextId: number = 0;
-  ngOnInit() {
+  /*ngOnInit() {
     this._user = this.user;
     this.id = +this.activatedRoute.snapshot.params['id'];
     if (this.id > -1) {
       this._user = this.userService.userList.find(c => c.id === this.id);
       if (this._user)
         this.user = this._user;
+
+
     }
 
   }
@@ -51,7 +54,54 @@ export class FormComponent implements OnInit {
 
 
 
+  }*/
+  ngOnInit(): void {
+    this.id = +this.activatedRoute.snapshot.params['id'];
+    if (this.id > 0)
+      this.userService.returnUser(this.id).subscribe((v: User) => {
+        this.user = v;
+        console.log("user: " + this.user.email);
+      });
+
+
   }
+  addUser(form: NgForm) {
+    if (this.user.id && this.user.id > -1) {
+      this.updateRecord();
+    }
+
+
+    else {
+      this.insertRecord(form);
+    }
+  }
+
+  insertRecord(form: NgForm) {
+    this.nextId = this.userService.returnAll.length;
+    this.user.id = this.nextId++;
+    this.userService.addUser({ ...this.user }).subscribe(
+      res => {
+        form.reset();
+        this.router.navigate(["user/table"]);
+        console.log("submitted");
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  updateRecord() {
+    this.userService.updateUser(this.user.id, { ...this.user }).subscribe(
+      res => {
+        console.log("Updated");
+      },
+      err => {
+        console.log(err);
+      }
+    );;
+  }
+
 
 
 

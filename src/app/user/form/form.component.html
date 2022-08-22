@@ -1,7 +1,7 @@
 <h1>{{id>-1? "Update user":"Add a new User"}}</h1>
 <form #form="ngForm" name="myForm">
 
-    <label for="name">Name</label>
+    <!--<label for="name">Name</label>
     <div class="row-flex">
         <input class="field" type="text"
             [ngStyle]="{'border-left':(user.name == '' && nameControl.touched)? 'solid red' : 'solid black' }"
@@ -9,7 +9,7 @@
         <div *ngIf="form.form.controls['name']?.touched && form.form.controls['name']?.invalid" title="Invalid"
             class="invalid"> !
         </div>
-    </div>
+    </div>-->
 
 
     <label for="username">Username</label>
@@ -22,14 +22,14 @@
         </div>
     </div>
 
-    <label for="dob">Date Of Birth</label>
+    <!--<label for="dob">Date Of Birth</label>
     <div class="row-flex">
         <input class="field" type="date" [ngStyle]="{'border-left':( dobControl.touched)? 'solid red' : 'solid black' }"
             [(ngModel)]="user.dob" name="dob" required id="dob" #dobControl="ngModel"><br><br>
         <div *ngIf="form.form.controls['dob']?.touched  && form.form.controls['dob']?.invalid" title="Invalid"
             class="invalid"> !
         </div>
-    </div>
+    </div>-->
 
 
 

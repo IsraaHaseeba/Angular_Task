@@ -11,22 +11,23 @@ import { AgePipePipe } from '../age-pipe.pipe';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-
+  public userList: any;
   constructor(public userService: UserService, public agePipePipe: AgePipePipe, public router: Router) { }
 
   ngOnInit() {
-
+    this.userService.returnAll().subscribe(
+      data => this.userList = data);
   }
-  addUser(user: User) {
+  /*addUser(user: User) {
 
     this.userService.userList.push(user);
   }
 
 
   deleteUser(user: User) {
-    let i = this.userService.userList.indexOf(user);
-    if (i >= 0) this.userService.userList.splice(i, 1);
-  }
+    let i = this.userService.list?.indexOf(user);
+    if (i && i >= 0) this.userService.list?.splice(i, 1);
+  }*/
   editUser(user: User) {
     this.router.navigate(["user/" + user.id]);
   }

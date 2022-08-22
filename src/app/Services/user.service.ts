@@ -1,24 +1,42 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../app.component';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
 
+    constructor(private http: HttpClient) { }
 
-    public userList: User[] = [
-        { id: 0, name: 'Israa', username: "israahaseeba", email: "h@gmail.com", password: "111" },
-        { id: 1, name: "Mohammad", username: "israahaseeba", email: "h@gmail.com", password: "98" },
-        { id: 2, name: "Luay", username: "israahaseeba", email: "h@gmail.com", password: "45" },
-        { id: 3, name: "Basim", username: "israahaseeba", email: "h@gmail.com", password: "12" },
-    ];
+    readonly baseURL = 'https://localhost:7125/api/Users/';
 
-    getUserById(id: number): User {
-        console.log(id);
-        return this.userList.find(user => this.userList.indexOf(user) === id)!;
+    user: User = { id: 0, username: '', email: '', password: '' };
+
+
+    addUser(user: User) {
+        return this.http.post(`${this.baseURL}`, user);
+    }
+    updateUser(id: number, user: User) {
+        return this.http.put(`${this.baseURL}${id}`, user);
+    }
+    returnAll(): Observable<User[]> {
+        return this.http.get<User[]>(`${this.baseURL}`);
+    }
+    returnUser(id: number): Observable<User> {
+        return this.http.get<User>(`${this.baseURL}${id}`);
     }
 
-    getAllUsers(): Array<User> {
-        return this.userList;
-    }
+
+
+    /*
+        getUserById(id: number): User {
+            console.log(id);
+            return this.userList.find(user => this.userList.indexOf(user) === id)!;
+        }
+    
+        getAllUsers(): Array<User> {
+            return this.userList;
+        }*/
 }
+
 

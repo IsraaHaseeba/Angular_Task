@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AgePipePipe } from './user/age-pipe.pipe';
 
 
 @NgModule({
@@ -15,8 +14,10 @@ import { AgePipePipe } from './user/age-pipe.pipe';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+
   ],
   providers: [
   ],

@@ -2,10 +2,10 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
             <th>Username</th>
-            <th>Age</th>
+            <!--<th>Age</th>
             <th>DoB</th>
+            <th>Name</th>-->
             <th>Email</th>
 
         </tr>
@@ -14,14 +14,15 @@
     </thead>
     <tbody>
 
-        <tr *ngFor="let _user of userService.userList">
+        <tr *ngFor="let _user of this.userList">
+
             <td>{{_user.id}} </td>
-            <td>{{_user.name}} </td>
             <td>{{_user.username}}</td>
-            <td>{{_user.dob | agePipe}}</td>
-            <td>{{_user.dob | date}}</td>
             <td>{{_user.email}}</td>
-            <th><button (click)="deleteUser(_user)">x</button></th>
+            <!--<td>{{_user.dob | agePipe}}</td>
+            <td>{{_user.dob | date}}</td>
+            
+            <th><button (click)="deleteUser(_user)">x</button></th>-->
             <th><button (click)="editUser(_user)">edit</button></th>
 
         </tr>

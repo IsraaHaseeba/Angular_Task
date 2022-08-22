@@ -2,11 +2,12 @@ import { Component, NgModule } from '@angular/core';
 
 
 export interface User {
+  [x: string]: any;
   id: number;
-  dob?: Date;
-  name: string;
+  //dob?: Date;
+  //name: string;
   username: string;
-  age?: number;
+  //age?: number;
   email: string;
   password: string;
 }
