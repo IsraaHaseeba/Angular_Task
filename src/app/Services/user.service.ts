@@ -10,14 +10,15 @@ export class UserService {
 
     readonly baseURL = 'https://localhost:7125/api/Users';
 
-    user: User = { id: 0, lastName: '', email: '', password: '' };
+    user: User = { id: 0, lastName: '', email: '' };
 
 
     addUser(user: User) {
         return this.http.post(`${this.baseURL}`, user);
     }
-    updateUser(id: number, user: User) {
-        return this.http.put(this.baseURL + "/" + id, user);
+    updateUser(user: User) {
+        console.log(user);
+        return this.http.put(`${this.baseURL}`, user);
     }
     returnAll(): Observable<User[]> {
         return this.http.get<User[]>(`${this.baseURL}`);

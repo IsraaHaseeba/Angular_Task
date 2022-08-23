@@ -14,7 +14,7 @@ import { UserService } from 'src/app/Services/user.service';
 
 export class FormComponent implements OnInit {
 
-  user: User = { id: 0, lastName: '', email: '', password: '' };
+  user: User = { id: 0, lastName: '', email: '' };
   _user?: User;
   id = -1;
 
@@ -60,7 +60,6 @@ export class FormComponent implements OnInit {
     if (this.id > 0)
       this.userService.returnUser(this.id).subscribe((v: User) => {
         this.user = v;
-        console.log("user: " + this.user.email);
       });
 
 
@@ -93,10 +92,12 @@ export class FormComponent implements OnInit {
   }
 
   updateRecord() {
-    this.userService.updateUser(this.user.id, { ...this.user }).subscribe(
+
+    this.userService.updateUser({ ...this.user }).subscribe(
       res => {
-        console.log("Updated");
         this.router.navigate(["user/table"]);
+        console.log("Updated");
+
       },
       err => {
         console.log(err);

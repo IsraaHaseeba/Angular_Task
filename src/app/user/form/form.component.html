@@ -40,6 +40,17 @@
         <div *ngIf="form.form.controls['dob']?.touched  && form.form.controls['dob']?.invalid" title="Invalid"
             class="invalid"> !
         </div>
+    </div>
+<label for="password">Password</label>
+
+    <div class="row-flex">
+        <input class="field" type="password "
+            [ngStyle]="{'border-left':(user.PasswordHash == '' && passwordControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.PasswordHash" minlength="4" required name="password" id="password"
+            #passwordControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['password']?.touched  && form.form.controls['password']?.invalid "
+            title="Invalid" class="invalid"> !
+        </div>
     </div>-->
 
 
@@ -57,17 +68,7 @@
         </div>
     </div>
 
-    <label for="password">Password</label>
 
-    <div class="row-flex">
-        <input class="field" type="password "
-            [ngStyle]="{'border-left':(user.password == '' && passwordControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.password" minlength="4" required name="password" id="password"
-            #passwordControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['password']?.touched  && form.form.controls['password']?.invalid "
-            title="Invalid" class="invalid"> !
-        </div>
-    </div>
 
 
 
