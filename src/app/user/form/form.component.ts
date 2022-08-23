@@ -14,7 +14,7 @@ import { UserService } from 'src/app/Services/user.service';
 
 export class FormComponent implements OnInit {
 
-  user: User = { id: 0, username: '', email: '', password: '' };
+  user: User = { id: 0, lastName: '', email: '', password: '' };
   _user?: User;
   id = -1;
 
@@ -79,6 +79,7 @@ export class FormComponent implements OnInit {
   insertRecord(form: NgForm) {
     this.nextId = this.userService.returnAll.length;
     this.user.id = this.nextId++;
+    console.log(this.user.lastName);
     this.userService.addUser({ ...this.user }).subscribe(
       res => {
         form.reset();
@@ -95,6 +96,7 @@ export class FormComponent implements OnInit {
     this.userService.updateUser(this.user.id, { ...this.user }).subscribe(
       res => {
         console.log("Updated");
+        this.router.navigate(["user/table"]);
       },
       err => {
         console.log(err);

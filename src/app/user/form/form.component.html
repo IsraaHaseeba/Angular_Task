@@ -12,12 +12,23 @@
     </div>-->
 
 
-    <label for="username">Username</label>
+
+    <label for="firstName">First Name</label>
     <div class="row-flex">
         <input class="field" type="text"
-            [ngStyle]="{'border-left':(user.username == '' && usernameControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.username" required name="username" id="username" #usernameControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['username']?.touched && form.form.controls['username']?.invalid" title="Invalid"
+            [ngStyle]="{'border-left':(user.firstName == '' && firstNameControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.firstName" required name="firstName" id="firstName" #firstNameControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['firstName']?.touched && form.form.controls['firstName']?.invalid"
+            title="Invalid" class="invalid"> !
+        </div>
+    </div>
+
+    <label for="lastName">Last Name</label>
+    <div class="row-flex">
+        <input class="field" type="text"
+            [ngStyle]="{'border-left':(user.lastName == '' && lastNameControl.touched)? 'solid red' : 'solid black' }"
+            [(ngModel)]="user.lastName" required name="lastName" id="lastName" #lastNameControl="ngModel"><br><br>
+        <div *ngIf="form.form.controls['lastName']?.touched && form.form.controls['lastName']?.invalid" title="Invalid"
             class="invalid"> !
         </div>
     </div>

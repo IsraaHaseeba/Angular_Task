@@ -8,22 +8,22 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
-    readonly baseURL = 'https://localhost:7125/api/Users/';
+    readonly baseURL = 'https://localhost:7125/api/Users';
 
-    user: User = { id: 0, username: '', email: '', password: '' };
+    user: User = { id: 0, lastName: '', email: '', password: '' };
 
 
     addUser(user: User) {
         return this.http.post(`${this.baseURL}`, user);
     }
     updateUser(id: number, user: User) {
-        return this.http.put(`${this.baseURL}${id}`, user);
+        return this.http.put(this.baseURL + "/" + id, user);
     }
     returnAll(): Observable<User[]> {
         return this.http.get<User[]>(`${this.baseURL}`);
     }
     returnUser(id: number): Observable<User> {
-        return this.http.get<User>(`${this.baseURL}${id}`);
+        return this.http.get<User>(this.baseURL + "/" + id);
     }
 
 
