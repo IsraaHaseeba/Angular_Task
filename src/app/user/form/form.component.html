@@ -16,8 +16,8 @@
                 </div></label>
             <div class="field-position">
                 <input class="w3-input w3-border field" type="text"
-                    [ngStyle]="{'border-left':(user.Name == '' && NameControl.touched)? 'solid red' : 'solid black' }"
-                    [(ngModel)]="user.Name" required name="Name" id="Name" #NameControl="ngModel">
+                    [ngStyle]="{'border-left':(user.name == '' && NameControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.name" required name="Name" id="Name" #NameControl="ngModel">
             </div>
         </div>
 
@@ -30,8 +30,8 @@
                 </div></label>
             <div class="field-position">
                 <input class="w3-input w3-border field" type="date"
-                    [ngStyle]="{'border-left':(user.Dob  && DobControl.touched)? 'solid red' : 'solid black' }"
-                    [(ngModel)]="user.Dob" required name="Dob" id="Dob" #DobControl="ngModel">
+                    [ngStyle]="{'border-left':(user.dob  && DobControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.dob" required name="Dob" id="Dob" #DobControl="ngModel">
             </div>
         </div>
 
@@ -44,8 +44,8 @@
                 </div></label>
             <div class="field-position">
                 <input class="w3-input w3-border field" type="email"
-                    [ngStyle]="{'border-left':(user.Email == '' && emailControl.touched)? 'solid red' : 'solid black' }"
-                    [(ngModel)]="user.Email" email required name="email" id="email" #emailControl="ngModel">
+                    [ngStyle]="{'border-left':(user.email == '' && emailControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.email" email required name="email" id="email" #emailControl="ngModel">
             </div>
         </div>
 
@@ -58,8 +58,8 @@
 
             <div class="field-position">
                 <input class="w3-input w3-border field" type="password"
-                    [ngStyle]="{'border-left':(user.Password == '' && PasswordControl.touched)? 'solid red' : 'solid black' }"
-                    [(ngModel)]="user.Password" name="Password" required id="Password" #PasswordControl="ngModel">
+                    [ngStyle]="{'border-left':(user.password == '' && PasswordControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.password" name="Password" required id="Password" #PasswordControl="ngModel">
 
 
                 <button type="submit" (click)="addUser(form)">{{id>-1? "Save": "Add"}}

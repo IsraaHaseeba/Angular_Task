@@ -32,12 +32,11 @@ export class TableComponent {
   }
 
 
-  deleteUser(user: User) {
-    // let i = this.userService.list?.indexOf(user);
-    // if (i && i >= 0) this.userService.list?.splice(i, 1);
+  deleteUser(id: number) {
+    this.userService.deleteUser(id);
   }
-  editUser(user: User) {
-    this.router.navigate(["user/" + user.Id]);
+  editUser(id: number) {
+    this.router.navigate(["user/" + id]);
   }
 
 }

@@ -14,79 +14,46 @@ import { UserService } from 'src/app/Services/user.service';
 
 export class FormComponent implements OnInit {
 
-  user: User = { Id: 0 };
+  user: User = { id: 0 };
   _user?: User;
   id = -1;
+  userList: User[] = [];
 
   constructor(public userService: UserService,
     public activatedRoute: ActivatedRoute, public router: Router) { }
   nextId: number = 0;
-  /*ngOnInit() {
-    this._user = this.user;
-    this.id = +this.activatedRoute.snapshot.params['id'];
-    if (this.id > -1) {
-      this._user = this.userService.userList.find(c => c.id === this.id);
-      if (this._user)
-        this.user = this._user;
 
-
-    }
-
-  }
-
-  addUser(form: NgForm) {
-    if (!form.form.valid) {
-      form.form.markAllAsTouched();
-    }
-    else if (this.user) {
-      if (this.id > -1) {
-        this.userService.userList[this.user.id] = this.user;
-      } else {
-        this.nextId = this.userService.userList.length;
-        this.user.id = this.nextId + 1;
-        this.userService.userList.push({ ...this.user });
-      }
-
-      this.router.navigate(['/user/table']);
-
-    }
-
-
-
-
-  }*/
   ngOnInit(): void {
     this.id = +this.activatedRoute.snapshot.params['id'];
-    if (this.id > 0)
-      this.userService.returnUser(this.id).subscribe((v: User) => {
-        this.user = v;
+    if (this.id > 0) {
+
+      this.userService.returnUser(this.id).subscribe(data => {
+        this.user = data;
       });
+
+    }
 
 
   }
   addUser(form: NgForm) {
-    if (this.user.Id && this.user.Id > -1) {
+    if (this.user.id && this.user.id > -1) {
       this.updateRecord();
+
     }
 
 
     else {
       this.insertRecord(form);
-
-
     }
   }
 
   insertRecord(form: NgForm) {
     this.nextId = this.userService.returnAll.length;
-    this.user.Id = this.nextId++;
-    this.userService.addUser(this.user).subscribe(
+    this.user.id = this.nextId++;
+    this.userService.addUser({ ...this.user }).subscribe(
       res => {
-        console.log(this.user.Name);
-
         form.reset();
         this.router.navigate(["user/list"]);
-
       },
       err => {
         console.log(err);
@@ -95,8 +62,8 @@ export class FormComponent implements OnInit {
   }
 
   updateRecord() {
-
-    this.userService.updateUser({ ...this.user }).subscribe(
+    console.log(this.user.id);
+    this.userService.updateUser({ ... this.user }).subscribe(
       res => {
         this.router.navigate(["user/list"]);
         console.log("Updated");
@@ -105,7 +72,7 @@ export class FormComponent implements OnInit {
       err => {
         console.log(err);
       }
-    );;
+    );
   }
 
 

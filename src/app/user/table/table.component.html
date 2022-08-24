@@ -25,9 +25,9 @@
             <td>{{_user.dob | agePipe }} </td>
             <td>{{_user.dob | date}}</td>
 
-            <th> <button class="table-button edit-button" (click)="editUser(_user)">Edit</button>
-                <button class="table-button delete-button" (click)="deleteUser(_user)">X</button>
-            </th>
+            <td> <button class="table-button edit-button" (click)="editUser(_user.id)">Edit</button>
+                <button class="table-button delete-button" (click)="deleteUser(_user.id)">X</button>
+            </td>
 
 
 

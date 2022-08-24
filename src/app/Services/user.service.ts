@@ -10,7 +10,7 @@ export class UserService {
 
     readonly baseURL = 'https://localhost:7125/api/Users';
 
-    user: User = { Id: 0 };
+    user: User = { id: 0 };
 
 
     addUser(user: User) {
@@ -26,18 +26,11 @@ export class UserService {
     returnUser(id: number): Observable<User> {
         return this.http.get<User>(this.baseURL + "/" + id);
     }
+    deleteUser(id: number) {
 
+        return this.http.delete(this.baseURL + "/" + id);
+    }
 
-
-    /*
-        getUserById(id: number): User {
-            console.log(id);
-            return this.userList.find(user => this.userList.indexOf(user) === id)!;
-        }
-    
-        getAllUsers(): Array<User> {
-            return this.userList;
-        }*/
 }
 
 
