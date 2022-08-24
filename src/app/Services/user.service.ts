@@ -10,7 +10,7 @@ export class UserService {
 
     readonly baseURL = 'https://localhost:7125/api/Users';
 
-    user: User = { id: 0, lastName: '', email: '' };
+    user: User = { Id: 0 };
 
 
     addUser(user: User) {

@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 
 export interface User {
 
-  id: number;
-  //dob?: Date;
-  //name: string;
-  firstName?: string;
-  lastName?: string;
-  //age?: number;
-  email?: string;
+  Id: number;
+  Name?: string;
+  Password?: string;
+  Email?: string;
+  Age?: number;
+  Dob?: Date;
+
 }
 
 

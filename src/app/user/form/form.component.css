@@ -16,6 +16,10 @@ label {
     height: 30px;
 }
 
+.empty-box {
+    height: 3vh;
+}
+
 button {
     width: 90px;
     color: white;

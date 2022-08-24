@@ -4,8 +4,8 @@ import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
-  { path: 'table', component: TableComponent },
-  { path: 'form', component: FormComponent },
+  { path: 'list', component: TableComponent },
+  { path: 'add', component: FormComponent },
   { path: ':id', component: FormComponent }
 ];
 

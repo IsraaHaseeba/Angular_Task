@@ -7,57 +7,62 @@
 
 <form #form="ngForm" class="box form" name="myForm">
 
-    <!--<label for="name">Name</label>
-    <div class="row-flex">
-        <input class="field" type="text"
-            [ngStyle]="{'border-left':(user.name == '' && nameControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.name" minlength="4" required name="name" id="name" #nameControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['name']?.touched && form.form.controls['name']?.invalid" title="Invalid"
-            class="invalid"> !
-        </div>
-    </div>-->
-
-
     <div class="col-flex">
 
         <div class="row-flex">
-            <label for="firstName" class="row-flex">First Name <div
-                    *ngIf="form.form.controls['firstName']?.touched && form.form.controls['firstName']?.invalid"
-                    title="Invalid" class="invalid"> *
+            <label for="Name" class="row-flex">Name <div
+                    *ngIf="form.form.controls['Name']?.touched && form.form.controls['Name']?.invalid" title="Invalid"
+                    class="invalid"> *
                 </div></label>
             <div class="field-position">
                 <input class="w3-input w3-border field" type="text"
-                    [ngStyle]="{'border-left':(user.firstName == '' && firstNameControl.touched)? 'solid red' : 'solid black' }"
-                    [(ngModel)]="user.firstName" required name="firstName" id="firstName" #firstNameControl="ngModel">
+                    [ngStyle]="{'border-left':(user.Name == '' && NameControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.Name" required name="Name" id="Name" #NameControl="ngModel">
             </div>
         </div>
 
+
+
         <div class="row-flex">
-            <label for="lastName" class="row-flex">Last Name <div
-                    *ngIf="form.form.controls['lastName']?.touched && form.form.controls['lastName']?.invalid"
-                    title="Invalid" class="invalid"> *
+            <label for="Dob" class="row-flex">Dob <div
+                    *ngIf="form.form.controls['Dob']?.touched && form.form.controls['Dob']?.invalid" title="Invalid"
+                    class="invalid"> *
                 </div></label>
             <div class="field-position">
-                <input class="w3-input w3-border field" type="text"
-                    [ngStyle]="{'border-left':(user.lastName == '' && lastNameControl.touched)? 'solid red' : 'solid black' }"
-                    [(ngModel)]="user.lastName" required name="lastName" id="lastName" #lastNameControl="ngModel">
+                <input class="w3-input w3-border field" type="date"
+                    [ngStyle]="{'border-left':(user.Dob  && DobControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.Dob" required name="Dob" id="Dob" #DobControl="ngModel">
+            </div>
+        </div>
+
+
+
+        <div class="row-flex">
+            <label for="email" class="row-flex">Email <div
+                    *ngIf="form.form.controls['email']?.touched && form.form.controls['email']?.invalid" title="Invalid"
+                    class="invalid"> *
+                </div></label>
+            <div class="field-position">
+                <input class="w3-input w3-border field" type="email"
+                    [ngStyle]="{'border-left':(user.Email == '' && emailControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.Email" email required name="email" id="email" #emailControl="ngModel">
             </div>
         </div>
 
         <div class="row-flex ">
-            <label for="email" class="row-flex">Email <div
-                    *ngIf="form.form.controls['email']?.touched && form.form.controls['email']?.invalid" title="Invalid"
-                    class="invalid">
+            <label for="Password" class="row-flex">Password <div
+                    *ngIf="form.form.controls['Password']?.touched && form.form.controls['Password']?.invalid"
+                    title="Invalid" class="invalid">
                     *
                 </div></label>
 
             <div class="field-position">
-                <input class="w3-input w3-border field" type="email"
-                    [ngStyle]="{'border-left':(user.email == '' && emailControl.touched)? 'solid red' : 'solid black' }"
-                    [(ngModel)]="user.email" name="email" email required id="email" #emailControl="ngModel">
+                <input class="w3-input w3-border field" type="password"
+                    [ngStyle]="{'border-left':(user.Password == '' && PasswordControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.Password" name="Password" required id="Password" #PasswordControl="ngModel">
 
 
-                <button type="submit" (click)="addUser(form)">{{id>-1? "Update": "Add"}}
+                <button type="submit" (click)="addUser(form)">{{id>-1? "Save": "Add"}}
                 </button>
             </div>
         </div>
@@ -66,24 +71,6 @@
 
 
     </div>
+    <div class="empty-box"></div>
 
 </form>
-<!--<label for="dob">Date Of Birth</label>
-    <div class="row-flex">
-        <input class="field" type="date" [ngStyle]="{'border-left':( dobControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.dob" name="dob" required id="dob" #dobControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['dob']?.touched  && form.form.controls['dob']?.invalid" title="Invalid"
-            class="invalid"> !
-        </div>
-    </div>
-<label for="password">Password</label>
-
-    <div class="row-flex">
-        <input class="field" type="password "
-            [ngStyle]="{'border-left':(user.PasswordHash == '' && passwordControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.PasswordHash" minlength="4" required name="password" id="password"
-            #passwordControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['password']?.touched  && form.form.controls['password']?.invalid "
-            title="Invalid" class="invalid"> !
-        </div>
-    </div>-->

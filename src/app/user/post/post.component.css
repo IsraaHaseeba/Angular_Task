@@ -1,0 +1,30 @@
+textarea {
+    border: none;
+    margin: 10px;
+}
+
+.box {
+    width: fit-content;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+
+
+.post {
+    width: 601px;
+}
+
+.main {
+    margin: auto;
+}
+
+button {
+    width: 90px;
+    color: white;
+    background-color: #78909C;
+    border: none;
+    border-radius: 4px;
+    height: 35px;
+    margin-top: 10px;
+}

@@ -3,7 +3,7 @@
 
 <div class="head flex-display">
     <h1 class="sub-title">Users</h1>
-    <button class="add-button">+</button>
+    <button class="add-button" (click)="addUser()">+</button>
 </div>
 <br>
 <table class="box  table table-hover">
@@ -21,12 +21,10 @@
         <tr scope="row" *ngFor="let _user of this.userList">
 
             <td>{{_user.id}} </td>
-            <td>{{_user.firstName}}</td>
-            <td>{{_user.lastName }} </td>
-            <td>{{_user.email}}</td>
-            <!--<td>{{_user.dob | agePipe}}</td>
+            <td>{{_user.name}}</td>
+            <td>{{_user.dob | agePipe }} </td>
             <td>{{_user.dob | date}}</td>
-            -->
+
             <th> <button class="table-button edit-button" (click)="editUser(_user)">Edit</button>
                 <button class="table-button delete-button" (click)="deleteUser(_user)">X</button>
             </th>
