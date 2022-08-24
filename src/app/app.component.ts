@@ -1,4 +1,5 @@
 import { Component, NgModule } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 export interface User {
@@ -20,6 +21,6 @@ export interface User {
 })
 export class AppComponent {
   title = 'FirstApp';
-
+  constructor(public router: Router) { }
 
 }

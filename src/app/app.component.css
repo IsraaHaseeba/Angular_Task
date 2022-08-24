@@ -3,41 +3,28 @@
     margin: 0%;
 }
 
-.col-flex {
-    display: flex;
-    flex-flow: column;
-}
 
-.row-flex {
-    display: flex;
-    flex-flow: row;
-}
 
+.active-link {
+    background-color: #DDDDDD;
+}
 
 .header {
-    display: flex;
-    flex-flow: column;
-    height: 60px;
+    padding: 5px;
     box-sizing: border-box;
+    font-weight: bold;
     justify-content: space-around;
-    background-color: #4CAF4FD2;
+    background-color: #78909C;
+    font-size: 20px;
 }
 
 
-.footer {
-    line-height: 60px;
-    padding-left: 15px;
-    height: 60px;
-    background-color: #494949EA;
-    color: white;
-
-}
 
 .mid {
 
     overflow-y: scroll;
     flex: 5;
-    background-color: #E7E7E7B0;
+    background-color: #FFFFFF
 }
 
 
@@ -47,10 +34,11 @@
 
 .page {
 
-
-    margin: 14px;
     background-color: #FFFFFF;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+
     flex: 1;
 
 
@@ -60,7 +48,6 @@
     flex: 7;
     display: flex;
     flex-direction: column;
-
     background-color: #E7E7E7B0;
     color: black;
 
@@ -68,17 +55,14 @@
 }
 
 .left-section {
-    display: flex;
-    flex-direction: column;
-
-    box-sizing: border-box;
-    background-color: #E7E7E7B0;
-    min-width: 200px;
-
+    background-color: #EBEFF2;
+    width: 215px;
+    padding-top: 13px;
+    height: auto;
 }
 
 
-.header-item {
+.title {
     margin: 5px 20px;
     flex: 1;
     justify-content: space-around;
@@ -98,32 +82,19 @@
 
 }
 
-.button {
-    background-color: #FFFFFF;
-    /* Green */
-    border: none;
+.side-button {
+    border-bottom: solid 1px #a5a4a467;
     color: rgb(31, 27, 27);
-    padding: 10px 25px;
-    font-size: 12px;
-    margin: 0.5%;
+    padding: 13px 25px;
+    font-size: 14px;
     cursor: pointer;
-
-
+    text-decoration: none;
 }
 
-.side-bar {
-    background-color: #FFFFFF;
-    padding-top: 10%;
-    margin: 7% 5%;
-    max-height: calc(100% - 30px);
-    justify-content: baseline;
 
 
-
-}
-
-.button:hover {
-    background-color: #4CAF4FD2;
+.side-button:hover {
+    background-color: #d4cfcfd3;
     transition: 0.4s;
 }
 

@@ -1,5 +1,11 @@
-<h1>{{id>-1? "Update user":"Add a new User"}}</h1>
-<form #form="ngForm" name="myForm">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<h1 class="sub-title">{{id>-1? "Update User":"Add User"}}</h1>
+<br>
+
+<form #form="ngForm" class="box form" name="myForm">
 
     <!--<label for="name">Name</label>
     <div class="row-flex">
@@ -12,28 +18,57 @@
     </div>-->
 
 
+    <div class="col-flex">
 
-    <label for="firstName">First Name</label>
-    <div class="row-flex">
-        <input class="field" type="text"
-            [ngStyle]="{'border-left':(user.firstName == '' && firstNameControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.firstName" required name="firstName" id="firstName" #firstNameControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['firstName']?.touched && form.form.controls['firstName']?.invalid"
-            title="Invalid" class="invalid"> !
+        <div class="row-flex">
+            <label for="firstName" class="row-flex">First Name <div
+                    *ngIf="form.form.controls['firstName']?.touched && form.form.controls['firstName']?.invalid"
+                    title="Invalid" class="invalid"> *
+                </div></label>
+            <div class="field-position">
+                <input class="w3-input w3-border field" type="text"
+                    [ngStyle]="{'border-left':(user.firstName == '' && firstNameControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.firstName" required name="firstName" id="firstName" #firstNameControl="ngModel">
+            </div>
         </div>
+
+        <div class="row-flex">
+            <label for="lastName" class="row-flex">Last Name <div
+                    *ngIf="form.form.controls['lastName']?.touched && form.form.controls['lastName']?.invalid"
+                    title="Invalid" class="invalid"> *
+                </div></label>
+            <div class="field-position">
+                <input class="w3-input w3-border field" type="text"
+                    [ngStyle]="{'border-left':(user.lastName == '' && lastNameControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.lastName" required name="lastName" id="lastName" #lastNameControl="ngModel">
+            </div>
+        </div>
+
+        <div class="row-flex ">
+            <label for="email" class="row-flex">Email <div
+                    *ngIf="form.form.controls['email']?.touched && form.form.controls['email']?.invalid" title="Invalid"
+                    class="invalid">
+                    *
+                </div></label>
+
+            <div class="field-position">
+                <input class="w3-input w3-border field" type="email"
+                    [ngStyle]="{'border-left':(user.email == '' && emailControl.touched)? 'solid red' : 'solid black' }"
+                    [(ngModel)]="user.email" name="email" email required id="email" #emailControl="ngModel">
+
+
+                <button type="submit" (click)="addUser(form)">{{id>-1? "Update": "Add"}}
+                </button>
+            </div>
+        </div>
+
+
+
+
     </div>
 
-    <label for="lastName">Last Name</label>
-    <div class="row-flex">
-        <input class="field" type="text"
-            [ngStyle]="{'border-left':(user.lastName == '' && lastNameControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.lastName" required name="lastName" id="lastName" #lastNameControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['lastName']?.touched && form.form.controls['lastName']?.invalid" title="Invalid"
-            class="invalid"> !
-        </div>
-    </div>
-
-    <!--<label for="dob">Date Of Birth</label>
+</form>
+<!--<label for="dob">Date Of Birth</label>
     <div class="row-flex">
         <input class="field" type="date" [ngStyle]="{'border-left':( dobControl.touched)? 'solid red' : 'solid black' }"
             [(ngModel)]="user.dob" name="dob" required id="dob" #dobControl="ngModel"><br><br>
@@ -52,29 +87,3 @@
             title="Invalid" class="invalid"> !
         </div>
     </div>-->
-
-
-
-
-
-    <label for="email">Email</label>
-    <div class="row-flex">
-        <input class="field" type="email"
-            [ngStyle]="{'border-left':(user.email == '' && emailControl.touched)? 'solid red' : 'solid black' }"
-            [(ngModel)]="user.email" name="email" email required id="email" #emailControl="ngModel"><br><br>
-        <div *ngIf="form.form.controls['email']?.touched && form.form.controls['email']?.invalid" title="Invalid"
-            class="invalid">
-            !
-        </div>
-    </div>
-
-
-
-
-
-
-</form>
-
-<button type="submit" (click)="addUser(form)">{{id>-1? "Update": "Add"}}
-</button>
-<br>

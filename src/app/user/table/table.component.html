@@ -1,21 +1,24 @@
-<table border="1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<div class="head flex-display">
+    <h1 class="sub-title">Users</h1>
+    <button class="add-button">+</button>
+</div>
+<br>
+<table class="box  table table-hover">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <!--<th>Age</th>
-            <th>DoB</th>
-            <th>Name</th>-->
-            <th>Email</th>
 
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Dob</th>
+            <th></th>
         </tr>
-
-
     </thead>
     <tbody>
-
-        <tr *ngFor="let _user of this.userList">
+        <tr scope="row" *ngFor="let _user of this.userList">
 
             <td>{{_user.id}} </td>
             <td>{{_user.firstName}}</td>
@@ -23,10 +26,16 @@
             <td>{{_user.email}}</td>
             <!--<td>{{_user.dob | agePipe}}</td>
             <td>{{_user.dob | date}}</td>
-            
-            <th><button (click)="deleteUser(_user)">x</button></th>-->
-            <th><button (click)="editUser(_user)">edit</button></th>
+            -->
+            <th> <button class="table-button edit-button" (click)="editUser(_user)">Edit</button>
+                <button class="table-button delete-button" (click)="deleteUser(_user)">X</button>
+            </th>
+
+
+
 
         </tr>
+
     </tbody>
 </table>
+<p class="lines-number">{{linesNum}} items to show.</p>

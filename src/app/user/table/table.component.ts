@@ -5,6 +5,8 @@ import { UserService } from 'src/app/Services/user.service';
 import { User } from '../../app.component';
 import { AgePipePipe } from '../age-pipe.pipe';
 
+
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -12,22 +14,28 @@ import { AgePipePipe } from '../age-pipe.pipe';
 })
 export class TableComponent {
   public userList: any;
+  linesNum: number = 0;
   constructor(public userService: UserService, public agePipePipe: AgePipePipe, public router: Router) { }
 
   ngOnInit() {
     this.userService.returnAll().subscribe(
-      data => this.userList = data);
+      data => {
+        this.userList = data;
+        this.linesNum = this.userList.length;
+
+      });
+
   }
   /*addUser(user: User) {
 
     this.userService.userList.push(user);
   }
 
-
+*/
   deleteUser(user: User) {
-    let i = this.userService.list?.indexOf(user);
-    if (i && i >= 0) this.userService.list?.splice(i, 1);
-  }*/
+    // let i = this.userService.list?.indexOf(user);
+    // if (i && i >= 0) this.userService.list?.splice(i, 1);
+  }
   editUser(user: User) {
     this.router.navigate(["user/" + user.id]);
   }

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Layout Task</title>
+    <title>Users System</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,26 +17,19 @@
 <body class="body col-flex">
 
     <div class="header">
-
-        <div class="header-item">
-            <button class="no-hover  button" onclick="addLine()">Add</button>
-
-            <button class="reset" onClick="window.location.reload();"><i class=" fas fa-redo-alt"></i>.</button>
-        </div>
-
-
-        <div id="content"></div>
+        <p class="title">APP LOGO</p>
     </div>
 
     <div class="mid row-flex">
-        <div class="left-section">
-            <!-- Sidebar -->
-            <div class="side-bar col-flex">
+        <div class="left-section col-flex">
 
-                <a class="button" routerLink="/user/form" routerLinkActive="active">Form </a>
-                <a class="button">Page 2</a>
-                <a class="button">Page 3</a>
-            </div>
+            <a class=" side-button " [ngClass]="{'active-link': router.url=='/user/table'}" routerLink="/user/table"
+                routerLinkActive="active">Users
+            </a>
+            <a class="side-button" [ngClass]="{'active-link': router.url=='/user/form'}" routerLink="/user/form"
+                routerLinkActive="active">Posts</a>
+            <a class="side-button" [ngClass]="{'active-link': router.url=='/user/2'}">Settings</a>
+
 
         </div>
         <div class="right-section">
@@ -56,9 +49,6 @@
         </div>
     </div>
 
-    <div class=" footer">
-        Footer Section
-    </div>
 
 </body>
 

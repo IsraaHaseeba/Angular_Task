@@ -1,15 +1,43 @@
 .invalid {
-    color: #a94442;
-    margin-left: 15px;
-    font-size: 30px;
-    font-weight: bold;
+    color: red;
+    margin-left: 5px;
+    width: 20px;
+
 }
 
-.row-flex {
-    display: flex;
-    justify-content: space-between 5px;
+.form {
+    padding: 20px;
+
 }
+
+label {
+    width: 130px;
+    padding-top: 7px;
+    height: 30px;
+}
+
+button {
+    width: 90px;
+    color: white;
+    background-color: #78909C;
+    border: none;
+    border-radius: 4px;
+    height: 35px;
+    margin-top: 10px;
+}
+
+.field-position {
+    display: flex;
+    flex-direction: column;
+    flex: 12;
+    margin-top: 10px;
+}
+
+
+
 
 .field {
-    height: 10%;
+    border-color: ridge 1px #757575;
+
+
 }
