@@ -3,7 +3,7 @@ import { identifierName } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
-import { UsersService } from 'src/typescript-angular-client-generated (3)';
+import { UsersService } from 'src/typescript-angular-client-generated (5)';
 import { User } from '../../app.component';
 import { AgePipePipe } from '../age-pipe.pipe';
 

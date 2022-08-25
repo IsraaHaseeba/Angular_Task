@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
-import { ApiModule, BASE_PATH } from 'src/typescript-angular-client-generated (3)';
+import { ApiModule, BASE_PATH } from 'src/typescript-angular-client-generated (5)';
 
 
 @NgModule({

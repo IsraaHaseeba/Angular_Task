@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthenticateService, LoginModel } from 'src/typescript-angular-client-generated (3)';
+import { AuthenticateService, LoginModel } from 'src/typescript-angular-client-generated (5)';
 import { User } from '../app.component';
 
 @Component({

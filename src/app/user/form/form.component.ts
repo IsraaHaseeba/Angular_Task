@@ -3,6 +3,7 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { User } from '../../app.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import { AuthenticateService, UsersService, UserViewModel } from 'src/typescript-angular-client-generated (5)';
 
 
 @Component({
@@ -14,12 +15,12 @@ import { UserService } from 'src/app/Services/user.service';
 
 export class FormComponent implements OnInit {
 
-  user: User = { id: 0 };
-  _user?: User;
+  user: UserViewModel = { id: 0 };
+  _user?: UserViewModel;
   id = -1;
   userList: User[] = [];
 
-  constructor(public userService: UserService,
+  constructor(public userService: UsersService, public authService: AuthenticateService,
     public activatedRoute: ActivatedRoute, public router: Router) { }
   nextId: number = 0;
 
@@ -27,9 +28,10 @@ export class FormComponent implements OnInit {
     this.id = +this.activatedRoute.snapshot.params['id'];
     if (this.id > 0) {
 
-      this.userService.returnUser(this.id).subscribe(data => {
+      this.userService.apiUsersIdGet(this.id).subscribe(data => {
         this.user = data;
       });
+
 
     }
 
@@ -48,22 +50,21 @@ export class FormComponent implements OnInit {
   }
 
   insertRecord(form: NgForm) {
-    this.nextId = this.userService.returnAll.length;
+    this.userService.apiUsersGet().subscribe(data => this.nextId = data.length);
     this.user.id = this.nextId++;
-    this.userService.addUser({ ...this.user }).subscribe(
-      res => {
-        form.reset();
-        this.router.navigate(["user/list"]);
-      },
+    this.userService.apiUsersPost({ ...this.user }).subscribe(res => {
+      form.reset();
+      this.router.navigate(["user/list"]);
+    },
       err => {
         console.log(err);
-      }
-    );
+      });
+
   }
 
   updateRecord() {
     console.log(this.user.id);
-    this.userService.updateUser({ ... this.user }).subscribe(
+    this.userService.apiUsersPut({ ... this.user }).subscribe(
       res => {
         this.router.navigate(["user/list"]);
         console.log("Updated");

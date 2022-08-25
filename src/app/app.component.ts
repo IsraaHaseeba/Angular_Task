@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostViewModel } from 'src/typescript-angular-client-generated (5)';
 
 
 export interface User {
@@ -9,6 +10,7 @@ export interface User {
   password?: string;
   email?: string;
   dob?: Date;
+  posts?: PostViewModel[]
 
 }
 

@@ -7,13 +7,12 @@ import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 import { FormsModule } from '@angular/forms';
 import { AgePipePipe } from './age-pipe.pipe';
-import { PostComponent } from './post/post.component';
 
 
 @NgModule({
   declarations:
     [FormComponent,
-      TableComponent, AgePipePipe, PostComponent],
+      TableComponent, AgePipePipe],
   imports: [
     CommonModule,
     UserRoutingModule, FormsModule

@@ -15,5 +15,7 @@ export interface UserViewModel {
     id?: number;
     name?: string;
     dob?: Date;
+    email?: string;
+    password?: string;
     posts?: Array<PostViewModel>;
 }

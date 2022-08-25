@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_BASE_PATH: 'https://localhost:7125/api/Users'
+  API_BASE_PATH: 'https://localhost:7125'
 };
 /*
  * For easier debugging in development mode, you can import the following file

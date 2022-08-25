@@ -10,20 +10,18 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from '@angular/core';
-import {
-    HttpClient, HttpHeaders, HttpParams,
-    HttpResponse, HttpEvent
-} from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from '../encoder';
+import { Inject, Injectable, Optional }                      from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams,
+         HttpResponse, HttpEvent }                           from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
-import { Observable } from 'rxjs';
+import { Observable }                                        from 'rxjs';
 
 import { LoginModel } from '../model/loginModel';
 import { RegisterModel } from '../model/registerModel';
 
-import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
-import { Configuration } from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
+import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
@@ -33,7 +31,7 @@ export class AuthenticateService {
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -68,7 +66,7 @@ export class AuthenticateService {
     public apiAuthenticateLoginPost(body?: LoginModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
     public apiAuthenticateLoginPost(body?: LoginModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
     public apiAuthenticateLoginPost(body?: LoginModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public apiAuthenticateLoginPost(body?: LoginModel, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public apiAuthenticateLoginPost(body?: LoginModel, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
         let headers = this.defaultHeaders;
@@ -97,7 +95,7 @@ export class AuthenticateService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post', 'https://localhost:7125/api/Authenticate/login',
+        return this.httpClient.request<any>('post',`${this.basePath}/api/Authenticate/login`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -118,7 +116,7 @@ export class AuthenticateService {
     public apiAuthenticateRegisterPost(body?: RegisterModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
     public apiAuthenticateRegisterPost(body?: RegisterModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
     public apiAuthenticateRegisterPost(body?: RegisterModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public apiAuthenticateRegisterPost(body?: RegisterModel, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
+    public apiAuthenticateRegisterPost(body?: RegisterModel, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
         let headers = this.defaultHeaders;
@@ -147,7 +145,7 @@ export class AuthenticateService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post', 'https://localhost:7125/api/Authenticate/register',
+        return this.httpClient.request<any>('post',`${this.basePath}/api/Authenticate/register`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
