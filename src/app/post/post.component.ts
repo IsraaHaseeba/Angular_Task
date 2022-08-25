@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
-import { PostsService, PostViewModel, UserViewModel } from 'src/typescript-angular-client-generated (5)';
+import { AuthenticateService, PostsService, PostViewModel, UserViewModel } from 'src/typescript-angular-client-generated (5)';
 
 @Component({
   selector: 'app-post',
@@ -8,13 +8,19 @@ import { PostsService, PostViewModel, UserViewModel } from 'src/typescript-angul
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  post?: string;
+  post?: PostViewModel;
   user?: UserViewModel;
   postsList?: PostViewModel[];
-  constructor(public postService: PostsService) { }
+  constructor(public postService: PostsService, public authService: AuthenticateService) { }
 
   ngOnInit(): void {
     this.postService.apiPostsGet().subscribe(posts => this.postsList = posts);
+  }
+  share() {
+
+    var x = document.getElementById("textarea")!.textContent;
+    if (x) this.post!.description = x;
+    this.postService.apiPostsPost(this.post).subscribe();
   }
 
 }

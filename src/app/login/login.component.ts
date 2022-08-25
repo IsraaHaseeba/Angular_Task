@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
       this.authenticateService.apiAuthenticateLoginPost(this.NewUser).subscribe();
       console.log(this.authenticateService.apiAuthenticateLoginPost(this.NewUser).subscribe());
 
+      localStorage.setItem('currentloggedin-name', this.NewUser.username);
+      localStorage.setItem('currentloggedin-pass', this.NewUser.password);
+
+
 
     }
   }
