@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     if (form.form.valid) {
       this.NewUser.username = form.value.username;
       this.NewUser.password = form.value.password;
+      console.log(this.NewUser.username);
       this.authenticateService.apiAuthenticateLoginPost(this.NewUser).subscribe();
       console.log(this.authenticateService.apiAuthenticateLoginPost(this.NewUser).subscribe());
 
