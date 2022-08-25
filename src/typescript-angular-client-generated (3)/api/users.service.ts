@@ -10,27 +10,29 @@
  * Do not edit the class manually.
  *//* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional }                      from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams,
-         HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec }                        from '../encoder';
+import { Inject, Injectable, Optional } from '@angular/core';
+import {
+    HttpClient, HttpHeaders, HttpParams,
+    HttpResponse, HttpEvent
+} from '@angular/common/http';
+import { CustomHttpUrlEncodingCodec } from '../encoder';
 
-import { Observable }                                        from 'rxjs';
+import { Observable } from 'rxjs';
 
-import { PostViewModel } from '../model/postViewModel';
+import { UserViewModel } from '../model/userViewModel';
 
-import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
-import { Configuration }                                     from '../configuration';
+import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
+import { Configuration } from '../configuration';
 
 
 @Injectable()
-export class PostsService {
+export class UsersService {
 
     protected basePath = '/';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional() @Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
         if (basePath) {
             this.basePath = basePath;
         }
@@ -61,10 +63,10 @@ export class PostsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiPostsGet(observe?: 'body', reportProgress?: boolean): Observable<Array<PostViewModel>>;
-    public apiPostsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<PostViewModel>>>;
-    public apiPostsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<PostViewModel>>>;
-    public apiPostsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public apiUsersGet(observe?: 'body', reportProgress?: boolean): Observable<Array<UserViewModel>>;
+    public apiUsersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<UserViewModel>>>;
+    public apiUsersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<UserViewModel>>>;
+    public apiUsersGet(observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
         let headers = this.defaultHeaders;
 
@@ -88,7 +90,7 @@ export class PostsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<PostViewModel>>('get',`${this.basePath}/api/Posts`,
+        return this.httpClient.request<Array<UserViewModel>>('get', 'https://localhost:7125/api/Users',
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -105,13 +107,13 @@ export class PostsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiPostsIdDelete(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public apiPostsIdDelete(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public apiPostsIdDelete(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public apiPostsIdDelete(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public apiUsersIdDelete(id: number, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public apiUsersIdDelete(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public apiUsersIdDelete(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public apiUsersIdDelete(id: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling apiPostsIdDelete.');
+            throw new Error('Required parameter id was null or undefined when calling apiUsersIdDelete.');
         }
 
         let headers = this.defaultHeaders;
@@ -133,7 +135,7 @@ export class PostsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<any>('delete',`${this.basePath}/api/Posts/${encodeURIComponent(String(id))}`,
+        return this.httpClient.request<any>('delete', 'https://localhost:7125/api/Users/' + encodeURIComponent(String(id)),
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -150,13 +152,13 @@ export class PostsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiPostsIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<PostViewModel>;
-    public apiPostsIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PostViewModel>>;
-    public apiPostsIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PostViewModel>>;
-    public apiPostsIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public apiUsersIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<UserViewModel>;
+    public apiUsersIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserViewModel>>;
+    public apiUsersIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserViewModel>>;
+    public apiUsersIdGet(id: number, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling apiPostsIdGet.');
+            throw new Error('Required parameter id was null or undefined when calling apiUsersIdGet.');
         }
 
         let headers = this.defaultHeaders;
@@ -181,65 +183,7 @@ export class PostsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<PostViewModel>('get',`${this.basePath}/api/Posts/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 
-     * @param page 
-     * @param size 
-     * @param textToSearch 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiPostsPagesizetextToSearchGet(page: number, size: number, textToSearch: string, observe?: 'body', reportProgress?: boolean): Observable<Array<PostViewModel>>;
-    public apiPostsPagesizetextToSearchGet(page: number, size: number, textToSearch: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<PostViewModel>>>;
-    public apiPostsPagesizetextToSearchGet(page: number, size: number, textToSearch: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<PostViewModel>>>;
-    public apiPostsPagesizetextToSearchGet(page: number, size: number, textToSearch: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (page === null || page === undefined) {
-            throw new Error('Required parameter page was null or undefined when calling apiPostsPagesizetextToSearchGet.');
-        }
-
-        if (size === null || size === undefined) {
-            throw new Error('Required parameter size was null or undefined when calling apiPostsPagesizetextToSearchGet.');
-        }
-
-        if (textToSearch === null || textToSearch === undefined) {
-            throw new Error('Required parameter textToSearch was null or undefined when calling apiPostsPagesizetextToSearchGet.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (Bearer) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/plain',
-            'application/json',
-            'text/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<Array<PostViewModel>>('get',`${this.basePath}/api/Posts/${encodeURIComponent(String(page))},${encodeURIComponent(String(size))},${encodeURIComponent(String(textToSearch))}`,
+        return this.httpClient.request<UserViewModel>('get', 'https://localhost:7125/api/Users/' + encodeURIComponent(String(id)),
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -256,10 +200,10 @@ export class PostsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiPostsPost(body?: PostViewModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public apiPostsPost(body?: PostViewModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public apiPostsPost(body?: PostViewModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public apiPostsPost(body?: PostViewModel, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public apiUsersPost(body?: UserViewModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public apiUsersPost(body?: UserViewModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public apiUsersPost(body?: UserViewModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public apiUsersPost(body?: UserViewModel, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
 
         let headers = this.defaultHeaders;
@@ -288,7 +232,7 @@ export class PostsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('post',`${this.basePath}/api/Posts`,
+        return this.httpClient.request<any>('post', 'https://localhost:7125/api/Users',
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -306,10 +250,10 @@ export class PostsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiPostsPut(body?: PostViewModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
-    public apiPostsPut(body?: PostViewModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
-    public apiPostsPut(body?: PostViewModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
-    public apiPostsPut(body?: PostViewModel, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public apiUsersPut(body?: UserViewModel, observe?: 'body', reportProgress?: boolean): Observable<any>;
+    public apiUsersPut(body?: UserViewModel, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<any>>;
+    public apiUsersPut(body?: UserViewModel, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<any>>;
+    public apiUsersPut(body?: UserViewModel, observe: any = 'body', reportProgress: boolean = false): Observable<any> {
 
 
         let headers = this.defaultHeaders;
@@ -338,7 +282,7 @@ export class PostsService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<any>('put',`${this.basePath}/api/Posts`,
+        return this.httpClient.request<any>('put', 'https://localhost:7125/api/Users',
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,

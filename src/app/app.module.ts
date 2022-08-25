@@ -4,11 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { environment } from 'src/environments/environment';
+import { LoginComponent } from './login/login.component';
+import { ApiModule, BASE_PATH } from 'src/typescript-angular-client-generated (3)';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent
 
 
   ],
@@ -17,9 +21,10 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ApiModule
 
   ],
-  providers: [
+  providers: [{ provide: BASE_PATH, useValue: environment.API_BASE_PATH }
   ],
   bootstrap: [AppComponent]
 })

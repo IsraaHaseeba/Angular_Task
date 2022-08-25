@@ -1,7 +1,9 @@
+import { HttpHeaders } from '@angular/common/http';
 import { identifierName } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import { UsersService } from 'src/typescript-angular-client-generated (3)';
 import { User } from '../../app.component';
 import { AgePipePipe } from '../age-pipe.pipe';
 
@@ -15,16 +17,23 @@ import { AgePipePipe } from '../age-pipe.pipe';
 export class TableComponent {
   public userList: any;
   linesNum: number = 0;
-  constructor(public userService: UserService,
+  constructor(public usersService: UsersService, public userService: UserService,
     public activatedRoute: ActivatedRoute, public agePipePipe: AgePipePipe, public router: Router) { }
 
   ngOnInit() {
-    this.userService.returnAll().subscribe(
-      data => {
-        this.userList = data;
-        this.linesNum = this.userList.length;
+    this.usersService.apiUsersGet().subscribe(data => {
 
-      });
+      this.userList = data;
+      this.linesNum = this.userList.length;
+
+
+    });
+    // this.userService.returnAll().subscribe(
+    //   data => {
+    //     this.userList = data;
+    //     this.linesNum = this.userList.length;
+
+    //   });
 
   }
   addUser() {
